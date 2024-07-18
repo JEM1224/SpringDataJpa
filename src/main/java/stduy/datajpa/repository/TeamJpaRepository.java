@@ -3,14 +3,13 @@ package stduy.datajpa.repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
-import stduy.datajpa.entity.Member;
 import stduy.datajpa.entity.Team;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class TeamRepository {
+public class TeamJpaRepository {
 
     @PersistenceContext //JPA EntityManger Injection
     private EntityManager em;
