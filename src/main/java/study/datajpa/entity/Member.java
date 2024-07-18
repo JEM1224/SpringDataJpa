@@ -1,4 +1,4 @@
-package stduy.datajpa.entity;
+package study.datajpa.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,14 +1,11 @@
-package stduy.datajpa.repository;
+package study.datajpa.repository;
 
 import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
-import stduy.datajpa.entity.Member;
-
-import static org.junit.jupiter.api.Assertions.*;
+import study.datajpa.entity.Member;
 
 @SpringBootTest
 @Transactional
