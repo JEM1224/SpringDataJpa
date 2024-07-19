@@ -36,11 +36,26 @@ import java.util.List;
 public interface MemberRepository extends JpaRepository<Member,Long> {
 
 
-    //쿼리 메서드 -> 메서드 이름으로 쿼리를 생성함
+    //1. 쿼리 메서드 -> 메서드 이름으로 쿼리를 생성함
+    //편리하나 조건이 많이 걸리면 메소드 명이 너무 길어짐
     List<Member> findByUsernameAndAgeGreaterThan(String username, int age);
 
-    //네임드 쿼리
+    //2. 네임드 쿼리
     //@Query(name="Member.findByUsername") 없어도됨
     List<Member> findByUsername(@Param("username") String username);
 
+    //3. 리포지토리 메소드에 JPQL 쿼리  정의
+    // 애플리케이션 로딩 시점에 오류 발견할 수 있음 (정적쿼리)
+    // 동적 쿼리는 Queryds 사용
+    @Query("select m from Member m where m.username = :username and m.age = :age")
+    List<Member> findUser(@Param("username") String username,@Param("age") int age);
+
+    /*
+    *  정적 쿼리와 동적 쿼리의 차이점
+    *  정적쿼리 : 애플리케이션 로딩 시점에 쿼리가 고정되어 있는 쿼리 (컴파일 시점에 쿼리 오류 발견, 성능 좋음, 유지보수좋음)
+    *
+    *  동적 쿼리 : 실행 시점에 조건에 따라 쿼리가 동적으로 생성되는 쿼리 ( 다양한 조건에 따라 쿼리를 유연하게 생성, 복잡한 쿼리를 작성할 때 필요)
+    *
+    *
+    * */
 }
