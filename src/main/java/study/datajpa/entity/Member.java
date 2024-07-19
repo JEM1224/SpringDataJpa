@@ -8,6 +8,10 @@ import lombok.*;
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {"id","username","age"}) //출력을 위한 , 연관관계 걸려있는 출력은 피하는게 좋다.
+@NamedQuery(
+        name="Member.findByUsername",
+        query = "select m from Member m where m.username = :username"
+) //namequery 쓰는 법
 public class Member {
 
     @Id @GeneratedValue

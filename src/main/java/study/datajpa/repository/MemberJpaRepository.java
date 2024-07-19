@@ -60,6 +60,13 @@ public class MemberJpaRepository {
                 .getResultList();
     }
 
+    //네임드 쿼리 사용법
+    public List<Member> findByUsername(String username){
+       return em.createNamedQuery("Member.findByUsername",Member.class)
+                .setParameter("username",username)
+                .getResultList();
+    }
+
 
 
 }
